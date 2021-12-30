@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    android:layout_marginHorizontal="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@android:color/transparent">
+
+    <AbsoluteLayout
+        android:layout_width="match_parent"
+        android:layout_height="167dp"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+
+        <TextView
+            android:id="@+id/alarmeView"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_x="2dp"
+            android:layout_y="2dp"
+            android:text="Nome Alarme"
+            android:textSize="26dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/timeView"
+            android:layout_width="137dp"
+            android:layout_height="71dp"
+            android:layout_weight="1"
+            android:layout_x="244dp"
+            android:layout_y="78dp"
+            android:gravity="center"
+            android:text="16:00"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Switch
+            android:id="@+id/activateView"
+            android:layout_width="159dp"
+            android:layout_height="51dp"
+            android:layout_x="12dp"
+            android:layout_y="57dp"
+            android:text="Activate"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/daysView"
+            android:layout_width="220dp"
+            android:layout_height="40dp"
+            android:layout_x="7dp"
+            android:layout_y="119dp"
+            android:text="Monday - Wednesday - Friday"
+            android:textSize="16dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/buttonSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_x="271dp"
+            android:layout_y="8dp"
+            android:text="Settings" />
+
+    </AbsoluteLayout>
+
+
+
+</androidx.cardview.widget.CardView>
