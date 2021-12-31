@@ -39,9 +39,19 @@ public class PersonalRecyclerView extends RecyclerView.Adapter<PersonalRecyclerV
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        String hours, minutes;
         Alarm alarm = mData.get(position);
         holder.nameTextView.setText(alarm.getName());
-        holder.timeTextView.setText(alarm.getHour()+":"+alarm.getMinutes());
+        if(alarm.getHour() < 10)
+            hours = "0"+alarm.getHour();
+        else
+            hours = alarm.getHour().toString();
+        if(alarm.getMinutes() < 10)
+            minutes = "0"+alarm.getMinutes();
+        else
+            minutes = alarm.getMinutes().toString();
+
+        holder.timeTextView.setText(hours+":"+minutes);
         holder.daysTextView.setText(getDaysText(alarm));
         holder.switchView.setChecked(alarm.getActivate());
 

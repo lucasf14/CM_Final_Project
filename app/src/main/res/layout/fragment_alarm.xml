@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="20dp">
+    android:padding="10dp">
 
     <RelativeLayout
         android:id="@+id/mainContainer"
@@ -40,11 +40,10 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
-            android:layout_height="181dp"
+            android:layout_height="match_parent"
             android:layout_above="@+id/recyclerContainer"
             android:layout_below="@+id/buttonContainer"
-            android:layout_marginTop="0dp"
-            android:layout_marginBottom="415dp" />
+            android:layout_marginTop="0dp" />
     </RelativeLayout>
 
 
