@@ -1,5 +1,6 @@
 package com.example.cmproject;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,30 +39,27 @@ public class PersonalRecyclerView extends RecyclerView.Adapter<PersonalRecyclerV
 
     // binds the data to the TextView in each row
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        String hours, minutes;
+    public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         Alarm alarm = mData.get(position);
         holder.nameTextView.setText(alarm.getName());
-        if(alarm.getHour() < 10)
-            hours = "0"+alarm.getHour();
-        else
-            hours = alarm.getHour().toString();
-        if(alarm.getMinutes() < 10)
-            minutes = "0"+alarm.getMinutes();
-        else
-            minutes = alarm.getMinutes().toString();
-
-        holder.timeTextView.setText(hours+":"+minutes);
+        String minutes = "";
+        if(alarm.getMinutes() < 10){
+            minutes += "0" + alarm.getMinutes();
+        }
+        holder.timeTextView.setText(alarm.getHour()+":"+minutes);
         holder.daysTextView.setText(getDaysText(alarm));
         holder.switchView.setChecked(alarm.getActivate());
+        System.out.println("ACTIVATE EQUALS =" + alarm.getActivate());
 
         holder.switchView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked) {
-                    System.out.println("VALIDO");
+                    System.out.println("Activate Switch");
+                    mClickListener.switchActivate(buttonView, position);
                 }
                 else {
-                    System.out.println("INVALIDO");
+                    System.out.println("Deactivate Switch");
+                    mClickListener.switchDeactivate(buttonView, position);
                 }
             }
         });
@@ -101,17 +99,17 @@ public class PersonalRecyclerView extends RecyclerView.Adapter<PersonalRecyclerV
 
         @Override
         public void onClick(View view) {
-            if (mClickListener != null) mClickListener.onItemClick(view, getAdapterPosition());
+            if (mClickListener != null) mClickListener.onViewItemClick(view, getAdapterPosition());
         }
     }
 
     // convenience method for getting data at click position
-    Alarm getItem(int id) {
+    public Alarm getItem(int id) {
         return mData.get(id);
     }
 
     // allows clicks events to be caught
-    void setClickListener(ItemClickListener itemClickListener) {
+    public void setClickListener(ItemClickListener itemClickListener) {
         this.mClickListener = itemClickListener;
     }
 
@@ -142,7 +140,9 @@ public class PersonalRecyclerView extends RecyclerView.Adapter<PersonalRecyclerV
 
     // parent activity will implement this method to respond to click events
     public interface ItemClickListener {
-        void onItemClick(View view, int position);
+        void onViewItemClick(View view, int position);
         void buttonOnClick(View view, int position);
+        void switchActivate(View view, int position);
+        void switchDeactivate(View view, int position);
     }
 }

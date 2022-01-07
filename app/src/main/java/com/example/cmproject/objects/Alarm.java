@@ -6,11 +6,17 @@ public class Alarm {
     private Boolean activate;
     private Integer hour;
     private Integer minutes;
+    private int lastPos;
     private String[] days;
 
     public Alarm(long id, String name){
         this.id = id;
         this.name = name;
+    }
+    public Alarm(String name, Integer hour, Integer minutes) {
+        this.name = name;
+        this.hour = hour;
+        this.minutes = minutes;
     }
 
     public Alarm(long id, String name, Boolean activate, Integer hour, Integer minutes){
@@ -20,6 +26,16 @@ public class Alarm {
         this.hour = hour;
         this.minutes = minutes;
     }
+
+    public Alarm(long id, String name, Boolean activate, Integer hour, Integer minutes, int lastPos){
+        this.id = id;
+        this.name = name;
+        this.activate = activate;
+        this.hour = hour;
+        this.minutes = minutes;
+        this.lastPos = lastPos;
+    }
+
 
     public long getId() {
         return id;
@@ -57,7 +73,7 @@ public class Alarm {
             hour = 0;
         }
         hour = Math.round(hour);
-        hour = hour;
+        this.hour = hour;
     }
 
     public Integer getMinutes() {
@@ -72,7 +88,7 @@ public class Alarm {
             minutes = 0;
         }
         minutes = Math.round(minutes);
-        minutes = minutes;
+        this.minutes = minutes;
     }
 
 
@@ -85,7 +101,15 @@ public class Alarm {
     }
 
     public void setDays(String days) {
-        this.days = days.substring(1,days.length()-1).split(",");
+        this.days = days.substring(1,days.length()-1).split(", ");
+    }
+
+    public int getLastPos() {
+        return lastPos;
+    }
+
+    public void setLastPos(int lastPos) {
+        this.lastPos = lastPos;
     }
 
     @Override
