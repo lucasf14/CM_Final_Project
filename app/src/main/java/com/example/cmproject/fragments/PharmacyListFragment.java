@@ -35,9 +35,9 @@ public class PharmacyListFragment extends Fragment implements TaskManager.Callba
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        String apiKey = "AIzaSyD_bG6vfjNnb881ADhRI9ge3cgYgo4YEUA";
-        //https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&types=food&name=harbour&key=AIzaSyD_bG6vfjNnb881ADhRI9ge3cgYgo4YEUA
-
+        // Needs Google API Key (Removed for safety)
+        String apiKey = "YOUR_API_KEY_HERE";
+   
         binding = FragmentPharmacyListBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
